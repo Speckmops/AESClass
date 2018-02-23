@@ -1,4 +1,4 @@
-﻿# Config
+﻿# AESClass
 AESClass is a lightweight class for encrypting and decrypting with AES
 
 You can encrypt or decrypt byte[], base64-strings or normal strings to your favorite output type. 
