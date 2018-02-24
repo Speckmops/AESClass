@@ -55,6 +55,10 @@ namespace par0noid
             string decryptedFromB64 = AESClass.Decrypt_Base64String2String(encryptedB64, Password);
 
             //You can convert everything from byte[], string, base64string to byte[], string, base64string
+
+            //It is also possible to compress data befor encryption and decompress after decryption
+            byte[] compressed_and_encrypted = AESClass.Encrypt_Byte2Byte(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, Password, true); //Set the last parameter 'true' to use compression
+            byte[] decompressed_and_decrypted = AESClass.Decrypt_Byte2Byte(compressed_and_encrypted, Password, true); //Set the last parameter 'true' to decompress the decrypted data
         }
     }
 }

@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Security.Cryptography;
+using System.IO.Compression;
 
 namespace par0noid
 {
@@ -42,46 +43,46 @@ namespace par0noid
         public static Encoding DefaultEncoding = Encoding.Default;
         public static CipherMode CipherMode = CipherMode.CBC;
 
-        public static byte[] Decrypt_Byte2Byte(byte[] data, byte[] Password) => Decrypt(data, Password);
-        public static byte[] Encrypt_Byte2Byte(byte[] data, byte[] Password) => Encrypt(data, Password);
-        public static string Decrypt_Byte2String(byte[] data, byte[] Password) => GetString(Decrypt(data, Password));
-        public static string Encrypt_Byte2String(byte[] data, byte[] Password) => GetString(Encrypt(data, Password));
-        public static byte[] Decrypt_String2Byte(string data, byte[] Password) => Decrypt(GetBytes(data), Password);
-        public static byte[] Encrypt_String2Byte(string data, byte[] Password) => Encrypt(GetBytes(data), Password);
-        public static string Decrypt_String2String(string data, byte[] Password) => GetString(Decrypt(GetBytes(data), Password));
-        public static string Encrypt_String2String(string data, byte[] Password) => GetString(Encrypt(GetBytes(data), Password));
-        public static byte[] Decrypt_Byte2Byte(byte[] data, string Password) => Decrypt(data, Password);
-        public static byte[] Encrypt_Byte2Byte(byte[] data, string Password) => Encrypt(data, Password);
-        public static string Decrypt_Byte2String(byte[] data, string Password) => GetString(Decrypt(data, Password));
-        public static string Encrypt_Byte2String(byte[] data, string Password) => GetString(Encrypt(data, Password));
-        public static byte[] Decrypt_String2Byte(string data, string Password) => Decrypt(GetBytes(data), Password);
-        public static byte[] Encrypt_String2Byte(string data, string Password) => Encrypt(GetBytes(data), Password);
-        public static string Decrypt_String2String(string data, string Password) => GetString(Decrypt(GetBytes(data), Password));
-        public static string Encrypt_String2String(string data, string Password) => GetString(Encrypt(GetBytes(data), Password));
-        public static string Decrypt_Base64String2String(string data, byte[] Password) => GetString(Decrypt(Convert.FromBase64String(data), Password));
-        public static string Encrypt_Base64String2String(string data, byte[] Password) => GetString(Encrypt(Convert.FromBase64String(data), Password));
-        public static string Decrypt_String2Base64String(string data, byte[] Password) => Convert.ToBase64String(Decrypt(GetBytes(data), Password));
-        public static string Encrypt_String2Base64String(string data, byte[] Password) => Convert.ToBase64String(Encrypt(GetBytes(data), Password));
-        public static byte[] Decrypt_Base64String2Byte(string data, byte[] Password) => Decrypt(Convert.FromBase64String(data), Password);
-        public static byte[] Encrypt_Base64String2Byte(string data, byte[] Password) => Encrypt(Convert.FromBase64String(data), Password);
-        public static string Decrypt_Byte2Base64String(byte[] data, byte[] Password) => Convert.ToBase64String(Decrypt(data, Password));
-        public static string Encrypt_Byte2Base64String(byte[] data, byte[] Password) => Convert.ToBase64String(Encrypt(data, Password));
-        public static string Decrypt_Base64String2Base64String(string data, byte[] Password) => Convert.ToBase64String(Decrypt(Convert.FromBase64String(data), Password));
-        public static string Encrypt_Base64StringBase64String(string data, byte[] Password) => Convert.ToBase64String(Encrypt(Convert.FromBase64String(data), Password));
-        public static string Decrypt_Base64String2String(string data, string Password) => GetString(Decrypt(Convert.FromBase64String(data), Password));
-        public static string Encrypt_Base64String2String(string data, string Password) => GetString(Encrypt(Convert.FromBase64String(data), Password));
-        public static string Decrypt_String2Base64String(string data, string Password) => Convert.ToBase64String(Decrypt(GetBytes(data), Password));
-        public static string Encrypt_String2Base64String(string data, string Password) => Convert.ToBase64String(Encrypt(GetBytes(data), Password));
-        public static byte[] Decrypt_Base64String2Byte(string data, string Password) => Decrypt(Convert.FromBase64String(data), Password);
-        public static byte[] Encrypt_Base64String2Byte(string data, string Password) => Encrypt(Convert.FromBase64String(data), Password);
-        public static string Decrypt_Byte2Base64String(byte[] data, string Password) => Convert.ToBase64String(Decrypt(data, Password));
-        public static string Encrypt_Byte2Base64String(byte[] data, string Password) => Convert.ToBase64String(Encrypt(data, Password));
-        public static string Decrypt_Base64String2Base64String(string data, string Password) => Convert.ToBase64String(Decrypt(Convert.FromBase64String(data), Password));
-        public static string Encrypt_Base64StringBase64String(string data, string Password) => Convert.ToBase64String(Encrypt(Convert.FromBase64String(data), Password));
+        public static byte[] Decrypt_Byte2Byte(byte[] data, byte[] Password, bool Compression = false) => Decrypt(data, Password, Compression);
+        public static byte[] Encrypt_Byte2Byte(byte[] data, byte[] Password, bool Compression = false) => Encrypt(data, Password, Compression);
+        public static string Decrypt_Byte2String(byte[] data, byte[] Password, bool Compression = false) => GetString(Decrypt(data, Password, Compression));
+        public static string Encrypt_Byte2String(byte[] data, byte[] Password, bool Compression = false) => GetString(Encrypt(data, Password, Compression));
+        public static byte[] Decrypt_String2Byte(string data, byte[] Password, bool Compression = false) => Decrypt(GetBytes(data), Password, Compression);
+        public static byte[] Encrypt_String2Byte(string data, byte[] Password, bool Compression = false) => Encrypt(GetBytes(data), Password, Compression);
+        public static string Decrypt_String2String(string data, byte[] Password, bool Compression = false) => GetString(Decrypt(GetBytes(data), Password, Compression));
+        public static string Encrypt_String2String(string data, byte[] Password, bool Compression = false) => GetString(Encrypt(GetBytes(data), Password, Compression));
+        public static byte[] Decrypt_Byte2Byte(byte[] data, string Password, bool Compression = false) => Decrypt(data, Password, Compression);
+        public static byte[] Encrypt_Byte2Byte(byte[] data, string Password, bool Compression = false) => Encrypt(data, Password, Compression);
+        public static string Decrypt_Byte2String(byte[] data, string Password, bool Compression = false) => GetString(Decrypt(data, Password, Compression));
+        public static string Encrypt_Byte2String(byte[] data, string Password, bool Compression = false) => GetString(Encrypt(data, Password, Compression));
+        public static byte[] Decrypt_String2Byte(string data, string Password, bool Compression = false) => Decrypt(GetBytes(data), Password, Compression);
+        public static byte[] Encrypt_String2Byte(string data, string Password, bool Compression = false) => Encrypt(GetBytes(data), Password, Compression);
+        public static string Decrypt_String2String(string data, string Password, bool Compression = false) => GetString(Decrypt(GetBytes(data), Password, Compression));
+        public static string Encrypt_String2String(string data, string Password, bool Compression = false) => GetString(Encrypt(GetBytes(data), Password, Compression));
+        public static string Decrypt_Base64String2String(string data, byte[] Password, bool Compression = false) => GetString(Decrypt(Convert.FromBase64String(data), Password, Compression));
+        public static string Encrypt_Base64String2String(string data, byte[] Password, bool Compression = false) => GetString(Encrypt(Convert.FromBase64String(data), Password, Compression));
+        public static string Decrypt_String2Base64String(string data, byte[] Password, bool Compression = false) => Convert.ToBase64String(Decrypt(GetBytes(data), Password, Compression));
+        public static string Encrypt_String2Base64String(string data, byte[] Password, bool Compression = false) => Convert.ToBase64String(Encrypt(GetBytes(data), Password, Compression));
+        public static byte[] Decrypt_Base64String2Byte(string data, byte[] Password, bool Compression = false) => Decrypt(Convert.FromBase64String(data), Password, Compression);
+        public static byte[] Encrypt_Base64String2Byte(string data, byte[] Password, bool Compression = false) => Encrypt(Convert.FromBase64String(data), Password, Compression);
+        public static string Decrypt_Byte2Base64String(byte[] data, byte[] Password, bool Compression = false) => Convert.ToBase64String(Decrypt(data, Password, Compression));
+        public static string Encrypt_Byte2Base64String(byte[] data, byte[] Password, bool Compression = false) => Convert.ToBase64String(Encrypt(data, Password, Compression));
+        public static string Decrypt_Base64String2Base64String(string data, byte[] Password, bool Compression = false) => Convert.ToBase64String(Decrypt(Convert.FromBase64String(data), Password, Compression));
+        public static string Encrypt_Base64StringBase64String(string data, byte[] Password, bool Compression = false) => Convert.ToBase64String(Encrypt(Convert.FromBase64String(data), Password, Compression));
+        public static string Decrypt_Base64String2String(string data, string Password, bool Compression = false) => GetString(Decrypt(Convert.FromBase64String(data), Password, Compression));
+        public static string Encrypt_Base64String2String(string data, string Password, bool Compression = false) => GetString(Encrypt(Convert.FromBase64String(data), Password, Compression));
+        public static string Decrypt_String2Base64String(string data, string Password, bool Compression = false) => Convert.ToBase64String(Decrypt(GetBytes(data), Password, Compression));
+        public static string Encrypt_String2Base64String(string data, string Password, bool Compression = false) => Convert.ToBase64String(Encrypt(GetBytes(data), Password, Compression));
+        public static byte[] Decrypt_Base64String2Byte(string data, string Password, bool Compression = false) => Decrypt(Convert.FromBase64String(data), Password, Compression);
+        public static byte[] Encrypt_Base64String2Byte(string data, string Password, bool Compression = false) => Encrypt(Convert.FromBase64String(data), Password, Compression);
+        public static string Decrypt_Byte2Base64String(byte[] data, string Password, bool Compression = false) => Convert.ToBase64String(Decrypt(data, Password, Compression));
+        public static string Encrypt_Byte2Base64String(byte[] data, string Password, bool Compression = false) => Convert.ToBase64String(Encrypt(data, Password, Compression));
+        public static string Decrypt_Base64String2Base64String(string data, string Password, bool Compression = false) => Convert.ToBase64String(Decrypt(Convert.FromBase64String(data), Password, Compression));
+        public static string Encrypt_Base64StringBase64String(string data, string Password, bool Compression = false) => Convert.ToBase64String(Encrypt(Convert.FromBase64String(data), Password, Compression));
 
-        private static byte[] Decrypt(byte[] data, string Password) => Decrypt(data, Encoding.Default.GetBytes(Password));
+        private static byte[] Decrypt(byte[] data, string Password, bool Compression = false) => Decrypt(data, Encoding.Default.GetBytes(Password), Compression);
 
-        private static byte[] Decrypt(byte[] data, byte[] Password)
+        private static byte[] Decrypt(byte[] data, byte[] Password, bool Compression = false)
         {
             try
             {
@@ -138,19 +139,31 @@ namespace par0noid
                             } while (readed > 0);
                         }
 
-                        return Result;
+                        if(Compression)
+                        {
+                            return Decompress(Result);
+                        }
+                        else
+                        {
+                            return Result;
+                        }
                     }
                 }
             }
             catch { throw new Exception("Decryption failed"); }
         }
 
-        private static byte[] Encrypt(byte[] data, string Password) => Encrypt(data, Encoding.Default.GetBytes(Password));
+        private static byte[] Encrypt(byte[] data, string Password, bool Compression = false) => Encrypt(data, Encoding.Default.GetBytes(Password), Compression);
 
-        private static byte[] Encrypt(byte[] data, byte[] Password)
+        private static byte[] Encrypt(byte[] data, byte[] Password, bool Compression = false)
         {
             try
             {
+                if(Compression)
+                {
+                    data = Compress(data);
+                }
+
                 List<byte> result = new List<byte>();
 
                 using (AesManaged AES = new AesManaged())
@@ -192,6 +205,47 @@ namespace par0noid
 
             }
             catch { throw new Exception("Encryption failed"); }
+        }
+
+        private static byte[] Compress(byte[] data)
+        {
+            try
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (DeflateStream ds = new DeflateStream(ms, CompressionMode.Compress))
+                    {
+                        ds.Write(data, 0, data.Length);
+                    }
+                    return ms.ToArray();
+                }
+            }
+            catch
+            {
+                throw new Exception("Compression failed");
+            }
+        }
+
+        private static byte[] Decompress(byte[] data)
+        {
+            try
+            {
+                using (MemoryStream decompressedMS = new MemoryStream())
+                {
+                    using (MemoryStream compressMS = new MemoryStream(data))
+                    {
+                        using (DeflateStream ds = new DeflateStream(compressMS, CompressionMode.Decompress))
+                        {
+                            ds.CopyTo(decompressedMS);
+                        }
+                    }
+                    return decompressedMS.ToArray();
+                }
+            }
+            catch
+            {
+                throw new Exception("Decompression failed");
+            }
         }
 
         private static string GetString(byte[] data) => DefaultEncoding.GetString(data);

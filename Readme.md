@@ -10,6 +10,7 @@ You can encrypt or decrypt byte[], base64-strings or normal strings to your favo
 - Hardcoded Keysize 256 / Blocksize 128
 - PBKDF2 Padding with random iteration (adjustable)
 - Random IV *(on every encryption)*
+- Optionally compression and decompression (with Deflate)
 
 
 ## EncryptedPaket-Structure
