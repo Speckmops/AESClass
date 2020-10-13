@@ -1,16 +1,5 @@
 ﻿/*
-                           __                           __     
-                         /'__`\                  __    /\ \    
- _____      __     _ __ /\ \/\ \    ___     ___ /\_\   \_\ \   
-/\ '__`\  /'__`\  /\`'__\ \ \ \ \ /' _ `\  / __`\/\ \  /'_` \  
-\ \ \L\ \/\ \L\.\_\ \ \/ \ \ \_\ \/\ \/\ \/\ \L\ \ \ \/\ \L\ \ 
- \ \ ,__/\ \__/.\_\\ \_\  \ \____/\ \_\ \_\ \____/\ \_\ \___,_\
-  \ \ \/  \/__/\/_/ \/_/   \/___/  \/_/\/_/\/___/  \/_/\/__,_ /
-   \ \_\                                                       
-    \/_/                                      addicted to code
-
-
-Copyright (C) 2018  Stefan 'par0noid' Zehnpfennig
+Copyright (C) 2020  Stefan Zehnpfennig
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 using System;
 using System.Text;
 
-namespace par0noid
+namespace speckmops
 {
     class Program
     {

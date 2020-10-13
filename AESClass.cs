@@ -1,16 +1,5 @@
 ﻿/*
-                           __                           __     
-                         /'__`\                  __    /\ \    
- _____      __     _ __ /\ \/\ \    ___     ___ /\_\   \_\ \   
-/\ '__`\  /'__`\  /\`'__\ \ \ \ \ /' _ `\  / __`\/\ \  /'_` \  
-\ \ \L\ \/\ \L\.\_\ \ \/ \ \ \_\ \/\ \/\ \/\ \L\ \ \ \/\ \L\ \ 
- \ \ ,__/\ \__/.\_\\ \_\  \ \____/\ \_\ \_\ \____/\ \_\ \___,_\
-  \ \ \/  \/__/\/_/ \/_/   \/___/  \/_/\/_/\/___/  \/_/\/__,_ /
-   \ \_\                                                       
-    \/_/                                      addicted to code
-
-
-Copyright (C) 2018  Stefan 'par0noid' Zehnpfennig
+Copyright (C) 2020  Stefan Zehnpfennig
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -33,7 +22,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.IO.Compression;
 
-namespace par0noid
+namespace speckmops
 {
     public static class AESClass
     {

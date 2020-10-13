@@ -25,8 +25,4 @@ Just take a look at the Program.cs for examples.
 | `0x54` | n bytes | byte[] | Encrypted data |
 
 
-### Hint
-
-**I'm using elements of C# 6.0. Be sure your compiler is configured for C# 6.0**
-
-**Dev-Website:** http://par0noid.info
+**Dev-Website:** http://speckmops.de
